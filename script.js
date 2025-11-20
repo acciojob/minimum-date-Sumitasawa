@@ -3,8 +3,16 @@ function minDate(dates) {
 	 if (!dates || dates.length === 0) {
     throw new Error("minDate requires a non-empty array of date strings.");
   }
-  return dates.reduce((min, curr) => (curr < min ? curr : min));
-	
+	let min=dates[0];
+	for(let i=0;i<dates.length;i++){
+		if(dates[i]<min){
+			let temp=dates[i];
+			dates[i]=min;
+			min=temp;
+		}
+	}
+ // return dates.reduce((min, curr) => (curr < min ? curr : min));
+	return min;
 }
 
 // Do not change the code
